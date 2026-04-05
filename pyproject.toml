@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "finreg-ml"
+version = "0.1.0"
+description = "Regulation-aware ML pipeline for finance"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [
+    {name = "Atharva Joshi", email = "atharvaj2112@gmail.com"},
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Office/Business :: Financial",
+]
+keywords = ["machine-learning", "finance", "compliance", "eu-ai-act", "fairness", "explainability"]
+
+dependencies = [
+    "scikit-learn>=1.2",
+    "numpy>=1.23",
+    "pandas>=1.5",
+    "shap>=0.42",
+    "pydantic>=2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/atharvajoshi01/finreg-ml"
+Repository = "https://github.com/atharvajoshi01/finreg-ml"
+Issues = "https://github.com/atharvajoshi01/finreg-ml/issues"
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
