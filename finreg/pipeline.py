@@ -6,7 +6,7 @@ from typing import Any, Dict, List, Optional, Union
 
 import numpy as np
 import pandas as pd
-from sklearn.base import BaseEstimator, ClassifierMixin, clone
+from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.metrics import accuracy_score, precision_score, recall_score, roc_auc_score, f1_score
 
 from finreg.audit import AuditLog

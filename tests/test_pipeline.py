@@ -3,16 +3,15 @@
 import numpy as np
 import pandas as pd
 import pytest
-from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 
 from finreg import GovernedModel
 from finreg.compliance import RiskTier
 
 try:
-    import shap
+    import shap  # noqa: F401
     HAS_SHAP = True
-except ImportError:
+except Exception:
     HAS_SHAP = False
 
 needs_shap = pytest.mark.skipif(not HAS_SHAP, reason="shap not importable")
