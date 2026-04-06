@@ -1,5 +1,9 @@
 # finreg-ml
 
+[![CI](https://github.com/atharvajoshi01/finreg-ml/actions/workflows/ci.yml/badge.svg)](https://github.com/atharvajoshi01/finreg-ml/actions/workflows/ci.yml)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://python.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 Regulation-aware ML pipeline for finance. Train a model, get a compliance report.
 
 Built for teams shipping ML in regulated industries (credit scoring, fraud detection, insurance pricing) who need explainability, fairness audits, and EU AI Act documentation as part of their workflow — not as an afterthought.
