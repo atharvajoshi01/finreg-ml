@@ -8,6 +8,7 @@ from finreg.fairness import FairnessReport, fairness_metrics
 from finreg.explain import ExplanationReport
 from finreg.model_card import ModelCard
 from finreg.compliance import ComplianceReport, RiskTier
+from finreg.drift import DriftReport, detect_drift
 
 __all__ = [
     "GovernedModel",
@@ -19,4 +20,6 @@ __all__ = [
     "ModelCard",
     "ComplianceReport",
     "RiskTier",
+    "DriftReport",
+    "detect_drift",
 ]
