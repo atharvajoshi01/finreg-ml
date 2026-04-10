@@ -9,6 +9,7 @@ from finreg.explain import ExplanationReport
 from finreg.model_card import ModelCard
 from finreg.compliance import ComplianceReport, RiskTier
 from finreg.drift import DriftReport, detect_drift
+from finreg.report import generate_report
 
 __all__ = [
     "GovernedModel",
@@ -22,4 +23,5 @@ __all__ = [
     "RiskTier",
     "DriftReport",
     "detect_drift",
+    "generate_report",
 ]
