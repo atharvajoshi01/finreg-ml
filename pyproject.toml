@@ -33,6 +33,7 @@ dependencies = [
     "pandas>=1.5",
     "shap>=0.42",
     "pydantic>=2.0",
+    "scipy>=1.10",
 ]
 
 [project.optional-dependencies]
