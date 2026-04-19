@@ -1,59 +1,48 @@
 <svg width="1280" height="360" viewBox="0 0 1280 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
-  <title id="title">finreg-ml Case File</title>
-  <desc id="desc">A compliance case file layout showing review tabs, risk controls, and generated artifacts for regulated machine learning.</desc>
+  <title id="title">finreg-ml Review File</title>
+  <desc id="desc">A clean review file visual showing how finreg-ml turns model training into a reviewable evidence package.</desc>
   <defs>
-    <filter id="sheetshadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#233547" flood-opacity="0.10"/>
+    <filter id="folderShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="9" flood-color="#203242" flood-opacity="0.10"/>
     </filter>
   </defs>
 
   <rect width="1280" height="360" rx="24" fill="#E8EDF2"/>
-  <rect x="76" y="38" width="1128" height="284" rx="18" fill="#FDFCF9" stroke="#C9D3DE" stroke-width="2" filter="url(#sheetshadow)"/>
+  <rect x="64" y="42" width="1152" height="278" rx="22" fill="#FCFCFA" stroke="#CDD6E0" stroke-width="2" filter="url(#folderShadow)"/>
+  <rect x="64" y="42" width="262" height="278" rx="22" fill="#102B40"/>
+  <rect x="94" y="40" width="118" height="30" rx="8" fill="#3B6A90"/>
 
-  <rect x="76" y="38" width="234" height="284" rx="18" fill="#0F2A3E"/>
-  <text x="112" y="86" fill="#B9D1E4" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="2">CASE FILE</text>
-  <text x="112" y="142" fill="#FFFFFF" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="42" font-weight="700">finreg-ml</text>
-  <text x="112" y="178" fill="#D1E0EC" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="19">Governed ML for workflows that get reviewed.</text>
+  <text x="96" y="98" fill="#BFD3E7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" letter-spacing="2">REVIEW FILE</text>
+  <text x="96" y="156" fill="#FFFFFF" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="52" font-weight="700">finreg-ml</text>
+  <text x="96" y="202" fill="#D5E2ED" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="24">Train the model.</text>
+  <text x="96" y="232" fill="#D5E2ED" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="24">Keep the evidence.</text>
 
-  <rect x="112" y="214" width="112" height="34" rx="17" fill="#163A54"/>
-  <text x="138" y="236" fill="#DCEFFF" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">reviewable</text>
-  <rect x="112" y="260" width="94" height="34" rx="17" fill="#1E4E3E"/>
-  <text x="136" y="282" fill="#D8F3E2" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">logged</text>
+  <rect x="364" y="68" width="250" height="96" rx="16" fill="#F4F9FD" stroke="#D5E1EC" stroke-width="2"/>
+  <text x="394" y="98" fill="#426988" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="2">STEP 01</text>
+  <text x="394" y="134" fill="#17202A" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="34" font-weight="700">Train</text>
+  <text x="394" y="160" fill="#4B5A67" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="20">Wrap the estimator</text>
 
-  <rect x="342" y="68" width="332" height="96" rx="14" fill="#F7FBFE" stroke="#D8E2EC" stroke-width="2"/>
-  <text x="370" y="98" fill="#446784" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" letter-spacing="2">REVIEW CHECKLIST</text>
-  <rect x="370" y="114" width="16" height="16" rx="4" fill="#2DA44E"/>
-  <path d="M374 122L378 126L384 118" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="398" y="127" fill="#17202A" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="17">technical documentation</text>
-  <rect x="370" y="138" width="16" height="16" rx="4" fill="#2DA44E"/>
-  <path d="M374 146L378 150L384 142" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="398" y="151" fill="#17202A" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="17">automatic logging</text>
-  <rect x="370" y="162" width="16" height="16" rx="4" fill="#F59E0B"/>
-  <text x="398" y="175" fill="#17202A" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="17">bias testing in progress</text>
+  <rect x="646" y="68" width="250" height="96" rx="16" fill="#F5FBF4" stroke="#D4E3D0" stroke-width="2"/>
+  <text x="676" y="98" fill="#4F7B4F" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="2">STEP 02</text>
+  <text x="676" y="134" fill="#17202A" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="34" font-weight="700">Review</text>
+  <text x="676" y="160" fill="#4B5A67" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="20">Check fairness and logs</text>
 
-  <rect x="702" y="68" width="214" height="96" rx="14" fill="#F6FBF4" stroke="#D6E5D0" stroke-width="2"/>
-  <text x="728" y="98" fill="#4B7752" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" letter-spacing="2">RISK TIER</text>
-  <text x="728" y="140" fill="#17202A" font-family="Georgia, Times New Roman, serif" font-size="34" font-weight="700">High impact</text>
-  <text x="728" y="164" fill="#52606C" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="15">Credit, fraud, pricing, underwriting</text>
+  <rect x="928" y="68" width="250" height="96" rx="16" fill="#FFF8EC" stroke="#E4D4B3" stroke-width="2"/>
+  <text x="958" y="98" fill="#9A6C17" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="2">STEP 03</text>
+  <text x="958" y="134" fill="#17202A" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="34" font-weight="700">Report</text>
+  <text x="958" y="160" fill="#4B5A67" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="20">Ship review artifacts</text>
 
-  <rect x="944" y="68" width="220" height="96" rx="14" fill="#FFF7EA" stroke="#E7D2AF" stroke-width="2"/>
-  <circle cx="1054" cy="116" r="42" fill="#FCE2A8" stroke="#D2A13E" stroke-width="2"/>
-  <text x="1015" y="123" fill="#875C08" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" letter-spacing="1">APPROVED?</text>
-  <text x="980" y="154" fill="#705C39" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="15">Needs evidence, not vibes.</text>
+  <path d="M614 116H646" stroke="#8FA8BD" stroke-width="6" stroke-linecap="round"/>
+  <path d="M896 116H928" stroke="#8FA8BD" stroke-width="6" stroke-linecap="round"/>
 
-  <rect x="342" y="188" width="822" height="104" rx="14" fill="#FBFCFD" stroke="#D8E2EC" stroke-width="2"/>
-  <text x="370" y="218" fill="#446784" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" letter-spacing="2">ARTIFACT PACKAGE</text>
-  <rect x="370" y="234" width="170" height="34" rx="10" fill="#E8F1F8"/>
-  <text x="392" y="256" fill="#2D577A" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14">model_card.json</text>
-  <rect x="556" y="234" width="164" height="34" rx="10" fill="#EAF4EC"/>
-  <text x="578" y="256" fill="#356243" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14">audit_log.json</text>
-  <rect x="736" y="234" width="214" height="34" rx="10" fill="#F8F1E4"/>
-  <text x="758" y="256" fill="#7A5B1D" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14">compliance_report.json</text>
-
-  <line x1="370" y1="282" x2="1138" y2="282" stroke="#E2EAF1" stroke-width="2"/>
-  <text x="370" y="310" fill="#4C5B67" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="16">Built for the moment someone asks: what data did you use, how was the model reviewed, and what evidence do you have?</text>
-
-  <rect x="1178" y="52" width="18" height="72" rx="9" fill="#D8E2EC"/>
-  <rect x="1178" y="132" width="18" height="72" rx="9" fill="#DCEAD8"/>
-  <rect x="1178" y="212" width="18" height="72" rx="9" fill="#EFE2BF"/>
+  <rect x="364" y="196" width="814" height="92" rx="18" fill="#FAFBFC" stroke="#D8E1EB" stroke-width="2"/>
+  <text x="394" y="228" fill="#426988" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="2">EVIDENCE PACKAGE</text>
+  <rect x="394" y="244" width="178" height="30" rx="10" fill="#E6EFF7"/>
+  <text x="416" y="264" fill="#32597E" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15">model_card.json</text>
+  <rect x="586" y="244" width="170" height="30" rx="10" fill="#E9F3EB"/>
+  <text x="608" y="264" fill="#356243" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15">audit_log.json</text>
+  <rect x="770" y="244" width="200" height="30" rx="10" fill="#F8F0E3"/>
+  <text x="792" y="264" fill="#7A5B1D" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15">compliance_report.json</text>
+  <text x="394" y="296" fill="#51606D" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="18">Story: training is only the start.</text>
+  <text x="394" y="320" fill="#51606D" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="18">finreg-ml keeps the review trail and the evidence package.</text>
 </svg>
