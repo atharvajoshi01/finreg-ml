@@ -7,7 +7,7 @@ name = "finreg-ml"
 version = "0.2.0"
 description = "Regulation-aware ML pipeline for finance"
 readme = "README.md"
-license = {text = "MIT"}
+license = "MIT"
 requires-python = ">=3.9"
 authors = [
     {name = "Atharva Joshi", email = "atharvaj2112@gmail.com"},
@@ -16,7 +16,6 @@ classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Financial and Insurance Industry",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
@@ -47,6 +46,9 @@ dev = [
 Homepage = "https://github.com/atharvajoshi01/finreg-ml"
 Repository = "https://github.com/atharvajoshi01/finreg-ml"
 Issues = "https://github.com/atharvajoshi01/finreg-ml/issues"
+
+[tool.setuptools]
+packages = ["finreg"]
 
 [tool.ruff]
 line-length = 100

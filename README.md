@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./assets/regulatory-control-plane.svg" width="100%" alt="finreg-ml regulatory control plane header"/>
+  <img src="./assets/regulatory-dossier.svg" width="100%" alt="finreg-ml regulatory dossier header"/>
 </div>
 
 <div align="center">
@@ -10,19 +10,19 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-2da44e.svg)](LICENSE)
 [![Status: Alpha](https://img.shields.io/badge/status-alpha-f59e0b.svg)](#current-scope)
 
-Train a model. Produce the artifacts compliance teams ask for.
+Train a model. Leave behind documentation another team can actually review.
 
 </div>
 
 `finreg-ml` is a regulation-aware wrapper around scikit-learn style models for teams building ML systems in workflows where explainability, fairness, auditability, and documentation are not optional.
 
-It is aimed at high-friction use cases like credit scoring, fraud detection, insurance pricing, and similar decision systems with regulatory or internal governance pressure.
+It is aimed at use cases like credit scoring, fraud detection, insurance pricing, and similar decision systems where review and traceability matter as much as the model itself.
 
 ## Why This Exists
 
 Most ML pipelines stop at model metrics.
 
-Real deployment does not.
+The work around the model usually gets pushed onto people later.
 
 You still need:
 
@@ -32,7 +32,7 @@ You still need:
 - audit logs for training and prediction events
 - a compliance-oriented summary of what has and has not been generated
 
-`finreg-ml` packages those steps into one developer-facing flow.
+`finreg-ml` pulls those pieces closer to the training loop so you do not need to reconstruct them by hand after the fact.
 
 ## Control Plane
 

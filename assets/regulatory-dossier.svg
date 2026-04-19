@@ -1,0 +1,46 @@
+<svg width="1280" height="360" viewBox="0 0 1280 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">finreg-ml Regulatory Dossier</title>
+  <desc id="desc">A dossier style header with stacked reports, checklists, and compliance notes for regulated machine learning.</desc>
+  <rect width="1280" height="360" rx="24" fill="#EEF2F6"/>
+  <rect x="72" y="38" width="470" height="284" rx="18" fill="#FFFDFB" stroke="#CFD8E3" stroke-width="2"/>
+  <rect x="590" y="56" width="266" height="120" rx="16" fill="#FFFDFB" stroke="#CFD8E3" stroke-width="2"/>
+  <rect x="886" y="56" width="322" height="120" rx="16" fill="#E6F2EA" stroke="#B9D2C0" stroke-width="2"/>
+  <rect x="590" y="202" width="618" height="120" rx="16" fill="#FFFDFB" stroke="#CFD8E3" stroke-width="2"/>
+
+  <rect x="98" y="74" width="112" height="28" rx="14" fill="#DDEAF7"/>
+  <text x="120" y="93" fill="#315C88" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" letter-spacing="2">DOSSIER</text>
+  <text x="96" y="142" fill="#18212A" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="44" font-weight="700">finreg-ml</text>
+  <text x="96" y="184" fill="#4A5A67" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="20">Governance oriented tooling for tabular ML.</text>
+
+  <text x="96" y="232" fill="#18212A" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="17">What it helps with:</text>
+  <text x="96" y="262" fill="#4A5A67" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="16">• explanations</text>
+  <text x="220" y="262" fill="#4A5A67" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="16">• fairness checks</text>
+  <text x="386" y="262" fill="#4A5A67" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="16">• audit logs</text>
+  <text x="96" y="288" fill="#4A5A67" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="16">• model cards</text>
+  <text x="220" y="288" fill="#4A5A67" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="16">• compliance reports</text>
+
+  <text x="618" y="90" fill="#315C88" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" letter-spacing="2">CHECKLIST</text>
+  <text x="618" y="120" fill="#18212A" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="18">technical documentation</text>
+  <text x="618" y="145" fill="#18212A" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="18">automatic logging</text>
+  <text x="618" y="170" fill="#18212A" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="18">bias testing</text>
+  <circle cx="824" cy="116" r="8" fill="#2DA44E"/>
+  <circle cx="824" cy="141" r="8" fill="#2DA44E"/>
+  <circle cx="824" cy="166" r="8" fill="#F59E0B"/>
+
+  <text x="914" y="90" fill="#4E7A57" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" letter-spacing="2">ARTIFACTS</text>
+  <text x="914" y="120" fill="#18212A" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="17">model_card.json</text>
+  <text x="914" y="145" fill="#18212A" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="17">audit_log.json</text>
+  <text x="914" y="170" fill="#18212A" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="17">compliance_report.json</text>
+
+  <text x="618" y="236" fill="#315C88" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" letter-spacing="2">FLOW</text>
+  <text x="618" y="270" fill="#18212A" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="17">data</text>
+  <text x="710" y="270" fill="#18212A" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="17">fit</text>
+  <text x="794" y="270" fill="#18212A" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="17">explain</text>
+  <text x="908" y="270" fill="#18212A" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="17">audit</text>
+  <text x="1004" y="270" fill="#18212A" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="17">report</text>
+  <path d="M655 262H690" stroke="#5B87B3" stroke-width="4" stroke-linecap="round"/>
+  <path d="M744 262H778" stroke="#5B87B3" stroke-width="4" stroke-linecap="round"/>
+  <path d="M856 262H890" stroke="#5B87B3" stroke-width="4" stroke-linecap="round"/>
+  <path d="M954 262H988" stroke="#5B87B3" stroke-width="4" stroke-linecap="round"/>
+  <text x="618" y="302" fill="#4A5A67" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="16">Designed for workflows where somebody will ask how the model was trained, why it made a decision, and what evidence you kept.</text>
+</svg>
