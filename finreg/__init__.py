@@ -1,6 +1,6 @@
 """finreg-ml: Regulation-aware ML pipeline for finance."""
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 from finreg.pipeline import GovernedModel
 from finreg.audit import AuditLog, AuditEntry
