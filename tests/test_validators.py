@@ -2,6 +2,7 @@
 
 import numpy as np
 import pandas as pd
+import pytest
 
 from finreg.validators import validate_training_data
 
@@ -28,12 +29,14 @@ class TestValidation:
         report = validate_training_data(X, y)
         assert any(i.check == "missing_values" for i in report.issues)
 
+    @pytest.mark.filterwarnings("ignore::RuntimeWarning")
     def test_constant_feature(self):
         X = pd.DataFrame({"a": [1] * 100, "b": np.random.randn(100)})
         y = pd.Series(np.random.randint(0, 2, 100))
         report = validate_training_data(X, y)
         assert any(i.check == "constant_feature" for i in report.issues)
 
+    @pytest.mark.filterwarnings("ignore::RuntimeWarning")
     def test_infinite_values(self):
         X = pd.DataFrame({"a": [1, 2, np.inf, 4, 5] * 20})
         y = pd.Series([0, 1] * 50)
