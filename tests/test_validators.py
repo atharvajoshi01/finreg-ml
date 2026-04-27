@@ -63,3 +63,17 @@ class TestValidation:
         d = report.to_dict()
         assert "passed" in d
         assert "issues" in d
+
+
+class TestVersionConsistency:
+    def test_init_matches_pyproject(self):
+        """Ensure __version__ in __init__.py matches pyproject.toml."""
+        import tomllib
+        from pathlib import Path
+
+        import finreg
+
+        pyproject = Path(__file__).parent.parent / "pyproject.toml"
+        with open(pyproject, "rb") as f:
+            data = tomllib.load(f)
+        assert finreg.__version__ == data["project"]["version"]
