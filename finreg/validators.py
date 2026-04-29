@@ -39,6 +39,14 @@ class ValidationReport:
     def n_warnings(self) -> int:
         return sum(1 for i in self.issues if i.severity == "warning")
 
+    def __repr__(self) -> str:
+        status = "PASS" if self.passed else "FAIL"
+        return (
+            f"ValidationReport({status}, n_samples={self.n_samples}, "
+            f"n_features={self.n_features}, errors={self.n_errors}, "
+            f"warnings={self.n_warnings})"
+        )
+
     def to_dict(self) -> Dict:
         return {
             "passed": self.passed,
