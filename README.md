@@ -45,6 +45,7 @@ You still need:
 | `Audit` | append-only audit log with SHA-256 integrity checks |
 | `Reporting` | JSON and Markdown outputs for model cards, compliance reports, and aggregate reporting |
 | `Validation and drift` | training-data validation, threshold tooling, and drift detection utilities |
+| `Temporal integrity` | point-in-time correctness check that catches feature timestamps later than the prediction event; surfaces as an EU AI Act Article 10 control |
 
 ## Operating Flow
 
@@ -81,6 +82,18 @@ model = GovernedModel(
 
 model.fit(X_train, y_train)
 metrics = model.evaluate(X_test, y_test)
+
+# Optional: point-in-time correctness check at fit time. Catches features
+# whose as-of timestamp is later than the prediction event, the most common
+# silent leakage class in credit and insurance ML. Pass strict_temporal=True
+# to refuse to fit on a leaking panel.
+model.fit(
+    X_train_with_timestamp_columns,
+    y_train,
+    prediction_timestamps=application_timestamps,
+    feature_timestamp_columns={"account_balance": "balance_as_of"},
+    strict_temporal=True,
+)
 explanations = model.explain(X_test)
 fairness = model.fairness_report(X_eval_with_protected_columns, y_test)
 compliance = model.compliance_report(

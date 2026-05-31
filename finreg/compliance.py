@@ -104,6 +104,8 @@ def assess_compliance(
     has_human_oversight: bool = False,
     has_accuracy_metrics: bool = False,
     has_data_governance: bool = False,
+    has_temporal_integrity_check: bool = False,
+    temporal_integrity_passed: Optional[bool] = None,
     model_name: str = "",
 ) -> ComplianceReport:
     """Assess EU AI Act compliance based on available documentation.
@@ -117,6 +119,9 @@ def assess_compliance(
         has_human_oversight: Whether human override capability exists.
         has_accuracy_metrics: Whether performance metrics are documented.
         has_data_governance: Whether data governance is documented.
+        has_temporal_integrity_check: Whether a point-in-time correctness
+            check was run on the training set.
+        temporal_integrity_passed: If a check ran, whether it passed.
         model_name: Name of the model being assessed.
 
     Returns:
@@ -191,6 +196,48 @@ def assess_compliance(
             detail="No data governance documentation for high-risk system.",
         ))
         recommendations.append("Document data sources, preprocessing, and quality controls.")
+
+    # Article 10 — Point-in-time correctness (sub-check on data governance).
+    # Captures whether feature timestamps were verified against the prediction
+    # event timestamp, a common silent-leakage class in credit/insurance ML.
+    if has_temporal_integrity_check:
+        if temporal_integrity_passed:
+            checks.append(ComplianceCheck(
+                article="Article 10",
+                requirement="Point-in-time correctness",
+                status="pass",
+                detail="Training features verified against prediction timestamps.",
+            ))
+        else:
+            checks.append(ComplianceCheck(
+                article="Article 10",
+                requirement="Point-in-time correctness",
+                status="fail",
+                detail=(
+                    "Temporal-integrity check found features whose as-of "
+                    "timestamp is later than the prediction timestamp. "
+                    "These are candidate leaks."
+                ),
+            ))
+            recommendations.append(
+                "Resolve temporal leaks before deployment. See "
+                "model.temporal_report for the specific features."
+            )
+    elif risk_tier == RiskTier.HIGH:
+        checks.append(ComplianceCheck(
+            article="Article 10",
+            requirement="Point-in-time correctness",
+            status="warning",
+            detail=(
+                "No temporal-integrity check was run on the training set. "
+                "Recommended for high-risk systems where feature timestamps "
+                "are available."
+            ),
+        ))
+        recommendations.append(
+            "Pass prediction_timestamps and feature_timestamp_columns to "
+            "GovernedModel.fit() to verify point-in-time correctness."
+        )
 
     # Article 12 — Record keeping
     if has_audit_log:

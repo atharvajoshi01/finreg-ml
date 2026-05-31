@@ -14,6 +14,10 @@ from finreg.compliance import ComplianceReport, RiskTier, assess_compliance
 from finreg.explain import ExplanationReport, compute_explanations
 from finreg.fairness import FairnessReport, fairness_metrics
 from finreg.model_card import ModelCard
+from finreg.validators import (
+    TemporalIntegrityReport,
+    validate_temporal_integrity,
+)
 
 
 class GovernedModel(BaseEstimator, ClassifierMixin):
@@ -66,6 +70,7 @@ class GovernedModel(BaseEstimator, ClassifierMixin):
         self._model_card: Optional[ModelCard] = None
         self._explanation: Optional[ExplanationReport] = None
         self._fairness_reports: List[FairnessReport] = []
+        self._temporal_report: Optional[TemporalIntegrityReport] = None
         self._is_fitted = False
         self._train_metrics: Dict[str, float] = {}
         self._eval_metrics: Dict[str, float] = {}
@@ -75,6 +80,11 @@ class GovernedModel(BaseEstimator, ClassifierMixin):
         self,
         X: pd.DataFrame,
         y: pd.Series,
+        prediction_timestamps: Optional[Any] = None,
+        feature_timestamps: Optional[Any] = None,
+        feature_timestamp_columns: Optional[Dict[str, str]] = None,
+        temporal_tolerance: Optional[Any] = None,
+        strict_temporal: bool = False,
         **fit_params: Any,
     ) -> GovernedModel:
         """Fit the estimator and log training metadata.
@@ -82,13 +92,72 @@ class GovernedModel(BaseEstimator, ClassifierMixin):
         Args:
             X: Training feature matrix (must be a DataFrame).
             y: Training target.
+            prediction_timestamps: One timestamp per row indicating when the
+                prediction would have been made. If provided alongside
+                ``feature_timestamps`` or ``feature_timestamp_columns``, a
+                point-in-time correctness check runs before training. This
+                catches feature-leakage bugs that statistical drift checks
+                miss: features whose as-of timestamp is later than the
+                prediction event.
+            feature_timestamps: Per-cell timestamps for the temporal check.
+                Either a DataFrame aligned to X or a mapping
+                ``{feature: Series}``. See ``validate_temporal_integrity``
+                for details.
+            feature_timestamp_columns: Per-column timestamps for the temporal
+                check. Mapping ``{feature: timestamp_column_in_X}``.
+            temporal_tolerance: ``pd.Timedelta`` tolerance for the temporal
+                check (defaults to zero / strict).
+            strict_temporal: If True, raise on any temporal-integrity failure
+                instead of just logging it. Recommended for high-risk-tier
+                models that go to production.
             **fit_params: Additional parameters passed to estimator.fit().
 
         Returns:
             self
+
+        Raises:
+            ValueError: if ``strict_temporal=True`` and the temporal check
+                fails, or if timestamp arguments are inconsistent.
         """
         if not isinstance(X, pd.DataFrame):
             raise TypeError("X must be a pandas DataFrame for auditability.")
+
+        # Point-in-time correctness check (optional but recommended for
+        # high-risk-tier deployments). Runs on the full X so the validator can
+        # see the timestamp columns. The timestamp columns are then dropped
+        # before the estimator sees X.
+        timestamp_columns_to_drop: List[str] = []
+        if prediction_timestamps is not None and (
+            feature_timestamps is not None or feature_timestamp_columns is not None
+        ):
+            tolerance = temporal_tolerance if temporal_tolerance is not None else pd.Timedelta(0)
+            self._temporal_report = validate_temporal_integrity(
+                X=X,
+                prediction_timestamps=prediction_timestamps,
+                feature_timestamps=feature_timestamps,
+                feature_timestamp_columns=feature_timestamp_columns,
+                tolerance=tolerance,
+            )
+            self.audit_log.log(
+                "temporal_integrity_check",
+                passed=self._temporal_report.passed,
+                n_features_checked=self._temporal_report.n_features_checked,
+                n_leaking_features=self._temporal_report.n_leaking_features,
+            )
+            if strict_temporal and not self._temporal_report.passed:
+                bad = ", ".join(leak.feature for leak in self._temporal_report.leaks)
+                raise ValueError(
+                    f"Temporal integrity check failed for features: {bad}. "
+                    f"Refusing to fit with strict_temporal=True. "
+                    f"Inspect model.temporal_report for details."
+                )
+            if feature_timestamp_columns is not None:
+                timestamp_columns_to_drop = [
+                    col for col in feature_timestamp_columns.values() if col in X.columns
+                ]
+
+        if timestamp_columns_to_drop:
+            X = X.drop(columns=timestamp_columns_to_drop)
 
         self._feature_names = list(X.columns)
 
@@ -260,6 +329,10 @@ class GovernedModel(BaseEstimator, ClassifierMixin):
             has_human_oversight=has_human_oversight,
             has_accuracy_metrics=bool(self._eval_metrics),
             has_data_governance=has_data_governance,
+            has_temporal_integrity_check=self._temporal_report is not None,
+            temporal_integrity_passed=(
+                self._temporal_report.passed if self._temporal_report is not None else None
+            ),
             model_name=self.model_name,
         )
 
@@ -279,6 +352,14 @@ class GovernedModel(BaseEstimator, ClassifierMixin):
         if self._model_card is None:
             raise RuntimeError("Model card not yet generated. Call fit() first.")
         return self._model_card
+
+    @property
+    def temporal_report(self) -> Optional[TemporalIntegrityReport]:
+        """The point-in-time correctness report from fit(), if one was run.
+
+        None when no temporal-integrity inputs were supplied to fit().
+        """
+        return self._temporal_report
 
     # --- private helpers ---
 
