@@ -1,5 +1,7 @@
 """Tests for data validation module."""
 
+import sys
+
 import numpy as np
 import pandas as pd
 import pytest
@@ -283,6 +285,10 @@ class TestTemporalIntegrityInGovernedModel:
 
 
 class TestVersionConsistency:
+    @pytest.mark.skipif(
+        sys.version_info < (3, 11),
+        reason="tomllib is only available in Python 3.11+",
+    )
     def test_init_matches_pyproject(self):
         """Ensure __version__ in __init__.py matches pyproject.toml."""
         import tomllib
