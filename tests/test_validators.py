@@ -5,7 +5,6 @@ import pandas as pd
 import pytest
 
 from finreg.validators import (
-    TemporalIntegrityReport,
     validate_temporal_integrity,
     validate_training_data,
 )
